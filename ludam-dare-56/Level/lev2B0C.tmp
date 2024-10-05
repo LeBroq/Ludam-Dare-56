@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlvca4vqtfktr"]
+
+[ext_resource type="PackedScene" uid="uid://du2hgkso2lnc0" path="res://Level/Objects/Scenes/tree.tscn" id="1_5351y"]
+[ext_resource type="PackedScene" uid="uid://dyg8wbdrt5vdn" path="res://Level/Objects/Scenes/ground.tscn" id="2_bghvg"]
+[ext_resource type="PackedScene" uid="uid://cu6e5wov83t5y" path="res://Level/Objects/Scenes/foilage.tscn" id="3_twwha"]
+[ext_resource type="PackedScene" uid="uid://cxx5xdwwtowha" path="res://Chipmunk/Scenes/Character.tscn" id="4_lb84o"]
+[ext_resource type="PackedScene" uid="uid://2jb3b2n8x8lm" path="res://Level/Objects/Scenes/acorn.tscn" id="5_jb3h1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Tree" parent="." instance=ExtResource("1_5351y")]
+position = Vector2(576, 415)
+
+[node name="Ground" parent="." instance=ExtResource("2_bghvg")]
+position = Vector2(576, 636)
+
+[node name="Foilage" parent="." instance=ExtResource("3_twwha")]
+position = Vector2(576, 187)
+
+[node name="Character" parent="." instance=ExtResource("4_lb84o")]
+position = Vector2(433, 608)
+
+[node name="Acorn" parent="." instance=ExtResource("5_jb3h1")]
+position = Vector2(494, 213)
+scale = Vector2(2, 2)

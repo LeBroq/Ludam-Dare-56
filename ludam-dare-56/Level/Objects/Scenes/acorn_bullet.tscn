@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnlpamog0g5jh"]
+
+[ext_resource type="Texture2D" uid="uid://bq2kbveltag4a" path="res://acorn.png" id="1_qe03f"]
+[ext_resource type="Script" path="res://Level/Objects/Scripts/acorn_bullet.gd" id="1_sedlb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mb8mr"]
+radius = 3.0
+
+[node name="AcornBullet" type="Area2D"]
+script = ExtResource("1_sedlb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_qe03f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mb8mr")
