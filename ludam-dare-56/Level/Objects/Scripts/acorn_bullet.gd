@@ -1,4 +1,5 @@
 extends Area2D
+class_name Bullet
 
 var total_elapsed_time = 0
 

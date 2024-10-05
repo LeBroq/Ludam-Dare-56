@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu6e5wov83t5y"]
+[gd_scene load_steps=4 format=3 uid="uid://cu6e5wov83t5y"]
 
 [ext_resource type="Texture2D" uid="uid://dqtify7tnom81" path="res://icon.svg" id="1_mam11"]
+[ext_resource type="Script" path="res://Level/Objects/Scripts/foilage.gd" id="1_sqrpl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70m6x"]
 size = Vector2(260, 128)
 
 [node name="Foilage" type="Area2D"]
+script = ExtResource("1_sqrpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.03125, 1)

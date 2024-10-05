@@ -7,13 +7,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _process(delta: float) -> void:
+	pass
 
 
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Chipmunk and body.acornTotal < 3:
-		body.acornTotal += 1
-		get_parent().totalCurrentAcorns -= 1
+func _on_area_entered(area: Area2D) -> void:
+	if area is Bullet:
+		area.queue_free()
 		self.queue_free()
