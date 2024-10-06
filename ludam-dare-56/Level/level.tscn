@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlvca4vqtfktr"]
+[gd_scene load_steps=19 format=3 uid="uid://dlvca4vqtfktr"]
 
 [ext_resource type="PackedScene" uid="uid://du2hgkso2lnc0" path="res://Level/Objects/Scenes/tree.tscn" id="1_5351y"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_fdgd3"]
@@ -48,6 +48,11 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.164706)
 shadow_offset = Vector2(5, 9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe64w"]
+font_size = 21
+font_color = Color(0, 0, 0.235294, 1)
+outline_size = 3
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_fdgd3")
@@ -179,7 +184,6 @@ offset_bottom = 52.0
 texture = ExtResource("7_stvgy")
 
 [node name="Acorn" parent="TextureRect" instance=ExtResource("8_tt6lj")]
-visible = false
 position = Vector2(20, 20)
 scale = Vector2(2.36, 2.4)
 collision_layer = 0
@@ -206,11 +210,20 @@ offset_bottom = 52.0
 texture = ExtResource("7_stvgy")
 
 [node name="Acorn" parent="TextureRect2" instance=ExtResource("8_tt6lj")]
-visible = false
 position = Vector2(20, 20)
 scale = Vector2(2.36, 2.4)
 collision_layer = 0
 collision_mask = 0
+
+[node name="TreeHealthLabel" type="Label" parent="."]
+offset_left = 428.0
+offset_top = 36.0
+offset_right = 728.0
+offset_bottom = 63.0
+text = "Tree Health"
+label_settings = SubResource("LabelSettings_fe64w")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

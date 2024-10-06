@@ -14,7 +14,7 @@ enum ChipmunkState{STATIONARY,MOVING,CLIMBING}
 var state : ChipmunkState
 
 enum ForwardState{LEFT,RIGHT,DOWN,UP}
-var direction = ForwardState.RIGHT
+var direction = ForwardState.LEFT
 
 func _physics_process(delta: float) -> void:
 	if get_parent().processing:

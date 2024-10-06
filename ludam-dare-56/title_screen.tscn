@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://5qrw6hnhhdk5"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_hjle3"]
+[ext_resource type="Texture2D" uid="uid://bq2kbveltag4a" path="res://acorn.png" id="2_singo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5k5a"]
+font_size = 66
+font_color = Color(0, 0.678431, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jjno"]
+font_size = 46
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hjle3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 167.0
+offset_right = 870.0
+offset_bottom = 322.0
+text = "Chipmunk Defense"
+label_settings = SubResource("LabelSettings_s5k5a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(221, 251)
+scale = Vector2(2.53125, 2.40625)
+texture = ExtResource("2_singo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(916, 252)
+scale = Vector2(2.53125, 2.40625)
+texture = ExtResource("2_singo")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 382.0
+offset_right = 744.0
+offset_bottom = 446.0
+text = "Press X to start"
+label_settings = SubResource("LabelSettings_2jjno")
+horizontal_alignment = 1
+vertical_alignment = 1
