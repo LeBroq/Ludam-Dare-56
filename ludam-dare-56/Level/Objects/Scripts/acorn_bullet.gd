@@ -20,3 +20,9 @@ func _process(delta: float) -> void:
 		self.queue_free()
 	position.x += Velocity.x * delta
 	position.y += Velocity.y * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.state = Enemy.EnemyState.DYING
+		queue_free()
+		

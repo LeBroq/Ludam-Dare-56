@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlvca4vqtfktr"]
+[gd_scene load_steps=18 format=3 uid="uid://dlvca4vqtfktr"]
 
 [ext_resource type="PackedScene" uid="uid://du2hgkso2lnc0" path="res://Level/Objects/Scenes/tree.tscn" id="1_5351y"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_fdgd3"]
@@ -6,23 +6,211 @@
 [ext_resource type="PackedScene" uid="uid://cu6e5wov83t5y" path="res://Level/Objects/Scenes/foilage.tscn" id="3_twwha"]
 [ext_resource type="PackedScene" uid="uid://cxx5xdwwtowha" path="res://Chipmunk/Scenes/Character.tscn" id="4_lb84o"]
 [ext_resource type="PackedScene" uid="uid://cxwme7cpgrey3" path="res://Enemy/Scenes/Enemy.tscn" id="6_mbdjp"]
+[ext_resource type="Texture2D" uid="uid://gtuscgm8ovfs" path="res://circle.png" id="7_stvgy"]
+[ext_resource type="PackedScene" uid="uid://2jb3b2n8x8lm" path="res://Level/Objects/Scenes/acorn.tscn" id="8_tt6lj"]
+
+[sub_resource type="Gradient" id="Gradient_71k1p"]
+offsets = PackedFloat32Array(0, 0.483871)
+colors = PackedColorArray(1, 1, 1, 1, 0.286691, 0.501014, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_twquf"]
+gradient = SubResource("Gradient_71k1p")
+
+[sub_resource type="Gradient" id="Gradient_r67gc"]
+offsets = PackedFloat32Array(0, 0.470968, 1)
+colors = PackedColorArray(0, 0.200369, 2.40654e-07, 1, 0, 0.388235, 0, 0.247059, 0, 0.388235, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gf6i5"]
+gradient = SubResource("Gradient_r67gc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abgfp"]
+size = Vector2(13.9704, 107.225)
+
+[sub_resource type="Gradient" id="Gradient_gsmhg"]
+offsets = PackedFloat32Array(0, 0.548387, 1)
+colors = PackedColorArray(0, 0.388235, 0, 0, 0, 0.388235, 0, 0.247059, 0, 0.2, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7070u"]
+gradient = SubResource("Gradient_gsmhg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_aw0ff"]
+font_size = 76
+font_color = Color(0.894118, 0.0627451, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.164706)
+shadow_offset = Vector2(4.98, 9.26)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcrj7"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.164706)
+shadow_offset = Vector2(5, 9)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_fdgd3")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 1152.0
+offset_right = 1800.0
+offset_bottom = 1152.0
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_twquf")
+
 [node name="Tree" parent="." instance=ExtResource("1_5351y")]
 position = Vector2(576, 415)
 disable_mode = 2
-
-[node name="Ground" parent="." instance=ExtResource("2_bghvg")]
-position = Vector2(576, 636)
-scale = Vector2(1.64, 1)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Enemy" parent="." instance=ExtResource("6_mbdjp")]
-position = Vector2(161, 557)
+position = Vector2(170, 557)
+collision_mask = 2
 
 [node name="Foilage" parent="." instance=ExtResource("3_twwha")]
 position = Vector2(576, 187)
 
 [node name="Character" parent="." instance=ExtResource("4_lb84o")]
-position = Vector2(433, 608)
+position = Vector2(431, 603)
+collision_mask = 5
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 5
+
+[node name="Sprite2D" type="TextureRect" parent="Wall"]
+offset_top = -496.0
+offset_right = 128.0
+offset_bottom = -367.0
+scale = Vector2(0.907698, 8.74994)
+texture = SubResource("GradientTexture2D_gf6i5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-50, 63)
+rotation = -3.14159
+scale = Vector2(8.30198, -10.4846)
+shape = SubResource("RectangleShape2D_abgfp")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(1170, -14)
+collision_layer = 5
+
+[node name="Sprite2D" type="TextureRect" parent="Wall2"]
+offset_left = -134.0
+offset_top = -491.0
+offset_right = -6.00002
+offset_bottom = -362.0
+scale = Vector2(0.907698, 8.74994)
+texture = SubResource("GradientTexture2D_7070u")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(30, 76)
+rotation = -3.14159
+scale = Vector2(8.30198, -10.4846)
+shape = SubResource("RectangleShape2D_abgfp")
+
+[node name="TreeHealth" type="ProgressBar" parent="."]
+modulate = Color(0.627451, 0.12549, 0.14902, 1)
+self_modulate = Color(0.628972, 0.126063, 0.14769, 1)
+offset_left = 428.0
+offset_top = 36.0
+offset_right = 728.0
+offset_bottom = 63.0
+step = 0.0
+value = 100.0
+show_percentage = false
+
+[node name="Ground" parent="." instance=ExtResource("2_bghvg")]
+position = Vector2(576, 636)
+scale = Vector2(1.64, 1)
+collision_layer = 15
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="You Win!!!" type="Label" parent="."]
+visible = false
+offset_left = 314.0
+offset_top = 300.0
+offset_right = 839.0
+offset_bottom = 405.0
+text = "You Win!!!"
+label_settings = SubResource("LabelSettings_aw0ff")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="You Lose!!!" type="Label" parent="."]
+visible = false
+offset_left = 314.0
+offset_top = 300.0
+offset_right = 839.0
+offset_bottom = 405.0
+text = "You Lose!!!"
+label_settings = SubResource("LabelSettings_aw0ff")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+offset_left = 114.0
+offset_top = 23.0
+offset_right = 290.0
+offset_bottom = 66.0
+text = "2:00"
+label_settings = SubResource("LabelSettings_gcrj7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 502.0
+offset_top = 414.0
+offset_right = 650.0
+offset_bottom = 429.0
+text = "Restart"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 823.0
+offset_top = 12.0
+offset_right = 863.0
+offset_bottom = 52.0
+texture = ExtResource("7_stvgy")
+
+[node name="Acorn" parent="TextureRect" instance=ExtResource("8_tt6lj")]
+visible = false
+position = Vector2(20, 20)
+scale = Vector2(2.36, 2.4)
+collision_layer = 0
+collision_mask = 0
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 923.0
+offset_top = 12.0
+offset_right = 963.0
+offset_bottom = 52.0
+texture = ExtResource("7_stvgy")
+
+[node name="Acorn" parent="TextureRect3" instance=ExtResource("8_tt6lj")]
+position = Vector2(20, 20)
+scale = Vector2(2.36, 2.4)
+collision_layer = 0
+collision_mask = 0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 873.0
+offset_top = 12.0
+offset_right = 913.0
+offset_bottom = 52.0
+texture = ExtResource("7_stvgy")
+
+[node name="Acorn" parent="TextureRect2" instance=ExtResource("8_tt6lj")]
+visible = false
+position = Vector2(20, 20)
+scale = Vector2(2.36, 2.4)
+collision_layer = 0
+collision_mask = 0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,20 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://du2hgkso2lnc0"]
+[gd_scene load_steps=7 format=3 uid="uid://du2hgkso2lnc0"]
 
-[ext_resource type="Texture2D" uid="uid://dqtify7tnom81" path="res://icon.svg" id="1_0bmlu"]
 [ext_resource type="Script" path="res://Level/Objects/Scripts/tree.gd" id="1_2nn0l"]
+[ext_resource type="Texture2D" uid="uid://cg30v80obsibb" path="res://tree.png" id="2_ivbas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dpqk"]
-size = Vector2(94, 418)
+size = Vector2(71, 209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddyaj"]
+size = Vector2(77, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l046w"]
+size = Vector2(82, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7de5"]
+size = Vector2(88, 40)
 
 [node name="Tree" type="Area2D"]
 script = ExtResource("1_2nn0l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.734375, 3.26563)
-texture = ExtResource("1_0bmlu")
+position = Vector2(1.90735e-06, 7.62939e-06)
+scale = Vector2(2.9375, 13.0625)
+texture = ExtResource("2_ivbas")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -104.5)
 shape = SubResource("RectangleShape2D_7dpqk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 39)
+shape = SubResource("RectangleShape2D_ddyaj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0, 124)
+shape = SubResource("RectangleShape2D_l046w")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(0, 189)
+shape = SubResource("RectangleShape2D_s7de5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
